@@ -165,3 +165,53 @@ function generateDownloadFilesForBlazor(cb) {
     cb();
 } exports.generateDownloadFilesForBlazor = generateDownloadFilesForBlazor;
 
+
+function cleanupSamplesPackageLock(cb) {
+
+    del.sync("../" + configs.wc.repoName + "/samples/**/package-lock.json", {force:true});
+    del.sync("../" + configs.react.repoName + "/samples/**/package-lock.json", {force:true});
+    del.sync("../" + configs.angular.repoName + "/samples/**/package-lock.json", {force:true});
+    cb();
+
+} exports.cleanupSamplesPackageLock = cleanupSamplesPackageLock;
+
+function cleanupSamplesPackageModules(cb) {
+
+    del.sync("../" + configs.wc.repoName + "/samples/**/node_modules/**/*.*", {force:true});
+    del.sync("../" + configs.wc.repoName + "/samples/**/node_modules", {force:true});
+
+    del.sync("../" + configs.react.repoName + "/samples/**/node_modules/**/*.*", {force:true});
+    del.sync("../" + configs.react.repoName + "/samples/**/node_modules", {force:true});
+
+    del.sync("../" + configs.angular.repoName + "/samples/**/node_modules/**/*.*", {force:true});
+    del.sync("../" + configs.angular.repoName + "/samples/**/node_modules", {force:true});
+    cb();
+
+} exports.cleanupSamplesPackageModules = cleanupSamplesPackageModules;
+
+
+function cleanupSamplesOutput(cb) {
+
+    var folders = [".git", ".github", ".vs", ".vscode", "dist", "output"];
+
+    for (const name of folders) {
+
+        del.sync("../" + configs.wc.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
+        del.sync("../" + configs.wc.repoName + "/samples/**/" + name + "", {force:true});
+
+        del.sync("../" + configs.react.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
+        del.sync("../" + configs.react.repoName + "/samples/**/" + name + "", {force:true});
+
+        del.sync("../" + configs.angular.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
+        del.sync("../" + configs.angular.repoName + "/samples/**/" + name + "", {force:true});
+    }
+
+    cb();
+
+} exports.cleanupSamplesOutput = cleanupSamplesOutput;
+
+exports.cleanupSamples = cleanupSamples = gulp.series(
+    cleanupSamplesPackageLock,
+    cleanupSamplesPackageModules,
+    cleanupSamplesOutput,
+);
