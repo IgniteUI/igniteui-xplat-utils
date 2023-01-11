@@ -12,17 +12,21 @@ Clone the following repositories on the same level as this repository.
 - [igniteui-wc-examples](https://github.com/IgniteUI/igniteui-wc-examples/tree/vnext)
 
 
-## Build Blazor Samples Browser
+## Prepare Samples
 
-Follow readme file in Blazor Samples Browser to build it locally:
+Follow readme file in [Blazor Samples Browser](https://github.com/IgniteUI/igniteui-blazor-examples/tree/vnext/browser) to build it locally:
 
-- open `IgBlazorSamples.Gulp` folder in VS Code
-- run `gulp updateBrowser`
+- open [IgBlazorSamples.Gulp](https://github.com/IgniteUI/igniteui-blazor-examples/tree/vnext/browser/IgBlazorSamples.Gulp) folder in VS Code
+- run `gulp updateBrowser` in terminal window
+
+Above gulp script will transform individual blazor samples as pages and copy them to the [browser](https://github.com/IgniteUI/igniteui-blazor-examples/tree/vnext/browser/IgBlazorSamples.Client/Pages) folder.
+
+NOTE: There is no need to build Angular, React, or WebComponents browsers.
 
 ## Run Scripts
 
-Run these scripts to generate download files for sample browsers in:
-`"./output/download-files/"`
+Run these scripts to generate download files for sample browsers and output them to:
+`./output/download-files/` 
 
 ```
 gulp generateDownloadFilesForAngular
@@ -44,10 +48,10 @@ gulp generateDownloadFilesForWC
 
 Zip up each folder in `/output/download-zip` folder and send zip files to RE team so they can update download links for the sample browsers:
 
-- angular samples browser
-- blazor samples browser
-- react samples browser
-- wc samples browser
+- igniteui-angular-examples 
+- igniteui-blazor-examples 
+- igniteui-react-examples 
+- igniteui-wc-examples 
 
 <!--
 
