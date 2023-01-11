@@ -192,7 +192,7 @@ function cleanupSamplesPackageModules(cb) {
 
 function cleanupSamplesOutput(cb) {
 
-    var folders = [".git", ".github", ".vs", ".vscode", "dist", "output"];
+    var folders = [".git", ".github", ".vs", ".vscode", "dist", "output", "bin", "obj"];
 
     for (const name of folders) {
 
@@ -204,6 +204,9 @@ function cleanupSamplesOutput(cb) {
 
         del.sync("../" + configs.angular.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
         del.sync("../" + configs.angular.repoName + "/samples/**/" + name + "", {force:true});
+
+        del.sync("../" + configs.blazor.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
+        del.sync("../" + configs.blazor.repoName + "/samples/**/" + name + "", {force:true});
     }
 
     cb();
