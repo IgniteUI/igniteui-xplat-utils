@@ -23,9 +23,9 @@ Above gulp script will transform individual blazor samples as pages and copy the
 
 NOTE: There is no need to build Angular, React, or WebComponents browsers.
 
-## Run Scripts
+## Generate Download Files
 
-Run these scripts to generate download files for sample browsers and output them to:
+Run these gulp scripts to generate download files for sample browsers and output them to:
 `./output/download-files/` 
 
 ```
