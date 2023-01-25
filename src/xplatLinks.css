@@ -1,0 +1,37 @@
+
+/* table, th,  */
+
+
+/* td {
+    display: flex;
+    flex-direction: column;
+    background: orange;
+  } */
+
+  tr {
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-items: flex-end; */
+    /* background: rgba(253, 108, 253, 0.644); */
+    margin-top: 0.1rem;
+
+}
+th {
+    background-color: rgb(8, 98, 243);
+    color: white;
+  }
+thead {
+    /* display: table-header-group; */
+    /* color: red; */
+}
+
+/* tr:nth-child(even) {background-color: #bdbdbd;} */
+
+.tLocal {
+    display: inline-block;
+    text-align: center;
+    width: 2rem;
+    background: green;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}

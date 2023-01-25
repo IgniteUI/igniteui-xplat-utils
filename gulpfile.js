@@ -10,6 +10,12 @@ function log(msg) {
 }
 // console.log('loaded');
 
+var xplatLinks = require('./src/xplatLinks.js')
+
+exports.generateLinks = generateLinks = gulp.series(
+    xplatLinks.generate,
+);
+
 let configs = {
 
     angular: {
@@ -82,11 +88,11 @@ let configs = {
         downloadFiles: [
             '../igniteui-blazor-examples/**/*.*',
         //  '../igniteui-blazor-examples/**/App.razor',
-           '!../igniteui-blazor-examples/README.md',
+        // '!../igniteui-blazor-examples/README.md',
            '!../igniteui-blazor-examples/browser/IgBlazorSamples.Server/**/*.*',
-           '!../igniteui-blazor-examples/browser/IgBlazorSamples.Gulp/**/*.*',
+        //    '!../igniteui-blazor-examples/browser/IgBlazorSamples.Gulp/**/*.*',
            '!../igniteui-blazor-examples/browser/**/code-viewer/**/*.*',  // skip auto-generated files by SB
-           '!../igniteui-blazor-examples/samples/**/*.*',   // excluding individual samples
+        // '!../igniteui-blazor-examples/samples/**/*.*',   // excluding individual samples
            '!../igniteui-blazor-examples/research/**/*.*',
            '!../igniteui-blazor-examples/tests/**/*.*',
            '!../igniteui-blazor-examples/templates/**/*.*',
@@ -104,7 +110,7 @@ let configs = {
     },
 };
 
-function generateDownloadFiles(cb, platform) {
+function generateDownloadFilesFor(cb, platform) {
 
     var config = configs[platform];
     var outputPath = "./output/download-files/" + config.repoName;
@@ -129,8 +135,8 @@ function generateDownloadFiles(cb, platform) {
         if (platform === "blazor") {
             del.sync(outputPath + "/browser/IgBlazorSamples.Server/**/*.*", {force:true});
             del.sync(outputPath + "/browser/IgBlazorSamples.Server", {force:true});
-            del.sync(outputPath + "/browser/IgBlazorSamples.Gulp/**/*.*", {force:true});
-            del.sync(outputPath + "/browser/IgBlazorSamples.Gulp", {force:true});
+            // del.sync(outputPath + "/browser/IgBlazorSamples.Gulp/**/*.*", {force:true});
+            // del.sync(outputPath + "/browser/IgBlazorSamples.Gulp", {force:true});
             del.sync(outputPath + "/research/**/*.*", {force:true});
             del.sync(outputPath + "/research", {force:true});
             del.sync(outputPath + "/tests/**/*.*", {force:true});
@@ -138,26 +144,26 @@ function generateDownloadFiles(cb, platform) {
         }
         cb();
     });
-} exports.generateDownloadFiles = generateDownloadFiles;
+} exports.generateDownloadFilesFor = generateDownloadFilesFor;
 
 // run this script to generate download files for react sample browser
 function generateDownloadFilesForReact(cb) {
-    generateDownloadFiles(cb, "react");
+    generateDownloadFilesFor(cb, "react");
 } exports.generateDownloadFilesForReact = generateDownloadFilesForReact;
 
 // run this script to generate download files for angular sample browser
 function generateDownloadFilesForAngular(cb) {
-    generateDownloadFiles(cb, "angular");
+    generateDownloadFilesFor(cb, "angular");
 } exports.generateDownloadFilesForAngular = generateDownloadFilesForAngular;
 
 // run this script to generate download files for angular sample browser
 function generateDownloadFilesForWC(cb) {
-    generateDownloadFiles(cb, "wc");
+    generateDownloadFilesFor(cb, "wc");
 } exports.generateDownloadFilesForWC = generateDownloadFilesForWC;
 
 // run this script to generate download files for angular sample browser
 function generateDownloadFilesForBlazor(cb) {
-    generateDownloadFiles(cb, "blazor");
+    generateDownloadFilesFor(cb, "blazor");
 
     // del.sync("./output/download-files/igniteui-blazor-examples/browser/IgBlazorSamples.Server/**/*.*", {force:true});
     // del.sync("./output/download-files/igniteui-blazor-examples/browser/IgBlazorSamples.Server", {force:true});
@@ -165,6 +171,12 @@ function generateDownloadFilesForBlazor(cb) {
     cb();
 } exports.generateDownloadFilesForBlazor = generateDownloadFilesForBlazor;
 
+exports.generateDownloadFiles = generateDownloadFiles = gulp.series(
+    generateDownloadFilesForAngular,
+    generateDownloadFilesForBlazor,
+    generateDownloadFilesForReact,
+    generateDownloadFilesForWC,
+);
 
 function cleanupSamplesPackageLock(cb) {
 
@@ -192,21 +204,21 @@ function cleanupSamplesPackageModules(cb) {
 
 function cleanupSamplesOutput(cb) {
 
-    var folders = [".git", ".github", ".vs", ".vscode", "dist", "output", "bin", "obj"];
+    var folders = [".git", ".github", ".angular", ".vs", ".vscode", "dist", "output", "bin", "obj"];
 
     for (const name of folders) {
 
-        del.sync("../" + configs.wc.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
-        del.sync("../" + configs.wc.repoName + "/samples/**/" + name + "", {force:true});
+        // del.sync("../" + configs.wc.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
+        // del.sync("../" + configs.wc.repoName + "/samples/**/" + name + "", {force:true});
 
-        del.sync("../" + configs.react.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
-        del.sync("../" + configs.react.repoName + "/samples/**/" + name + "", {force:true});
+        // del.sync("../" + configs.react.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
+        // del.sync("../" + configs.react.repoName + "/samples/**/" + name + "", {force:true});
 
         del.sync("../" + configs.angular.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
         del.sync("../" + configs.angular.repoName + "/samples/**/" + name + "", {force:true});
 
-        del.sync("../" + configs.blazor.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
-        del.sync("../" + configs.blazor.repoName + "/samples/**/" + name + "", {force:true});
+        // del.sync("../" + configs.blazor.repoName + "/samples/**/" + name + "/**/*.*", {force:true});
+        // del.sync("../" + configs.blazor.repoName + "/samples/**/" + name + "", {force:true});
     }
 
     cb();

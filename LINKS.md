@@ -1,0 +1,46 @@
+ <style> 
+
+/* table, th,  */
+
+
+/* td {
+    display: flex;
+    flex-direction: column;
+    background: orange;
+  } */
+
+  tr {
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-items: flex-end; */
+    /* background: rgba(253, 108, 253, 0.644); */
+    margin-top: 0.1rem;
+
+}
+th {
+    background-color: rgb(8, 98, 243);
+    color: white;
+  }
+thead {
+    /* display: table-header-group; */
+    /* color: red; */
+}
+
+/* tr:nth-child(even) {background-color: #bdbdbd;} */
+
+.tLocal {
+    display: inline-block;
+    text-align: center;
+    width: 2rem;
+    background: green;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+}
+ </style> 
+
+ | Platform      | API | Docs | Samples |
+ | ----------- | ----------- | --- | --- |
+ | react <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-react/api/docs/typescript/latest/)<br/><span class="tLocal">JP</span> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/products/ignite-ui-react/react/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-react/react/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=1780&_a=completed) <br/><span class="tLocal">JP</span>[STAG](https://staging.infragistics.com/products/ignite-ui-react/react/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-react/react/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=1782&_a=completed) <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/react-demos/samples) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/react-demos/samples) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=2074&_a=completed) - <span style="width: 1rem"> </span>[GIT](https://github.com/IgniteUI/igniteui-react-examples/tree/vnext)<br/><span class="tLocal">JP</span> |
+ | wc <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-web-components/api/docs/typescript/latest/)<br/><span class="tLocal">JP</span> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/products/ignite-ui-web-components/web-components/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-web-components/web-components/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=1784&_a=completed) <br/><span class="tLocal">JP</span>[STAG](https://staging.infragistics.com/products/ignite-ui-web-components/web-components/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-web-components/web-components/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=1785&_a=completed) <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/webcomponents-demos/samples/index) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/webcomponents-demos/samples/index) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=1972&_a=completed) - <span style="width: 1rem"> </span>[GIT](https://github.com/IgniteUI/igniteui-wc-examples/tree/vnext)<br/><span class="tLocal">JP</span> |
+ | blazor <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/blazor/docs/api/api/index.html) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/blazor/docs/api/api/index.html)<br/><span class="tLocal">JP</span> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/products/ignite-ui-blazor/blazor/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-blazor/blazor/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=2130&_a=completed) <br/><span class="tLocal">JP</span>[STAG](https://staging.infragistics.com/products/ignite-ui-blazor/blazor/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-blazor/blazor/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=2131&_a=completed) <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/blazor-client/) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/blazor-client/) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=2127&_a=completed) - <span style="width: 1rem"> </span>[GIT](https://github.com/IgniteUI/igniteui-blazor-examples/tree/vnext)<br/><span class="tLocal">JP</span> |
+ | angular <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-angular/api/docs/typescript/latest/)<br/><span class="tLocal">JP</span> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/products/ignite-ui-angular/angular/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-angular/angular/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=1812&_a=completed) <br/><span class="tLocal">JP</span>[STAG](https://staging.infragistics.com/products/ignite-ui-angular/angular/components/charts/chart-overview) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/products/ignite-ui-angular/angular/components/charts/chart-overview) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=1813&_a=completed) <br/> | <span class="tLocal">EN</span>[STAG](https://staging.infragistics.com/angular-demos-dv/samples) - <span style="width: 1rem"> </span>[PROD](https://infragistics.com/angular-demos-dv/samples) - <span style="width: 1rem"> </span>[BUILD](http://tfs.infragistics.local:8080/tfs/Engineering/IgInternalApplicationsGit/IgInternalApplicationsGit%20Team/_build/index?context=allDefinitions&path=%5C&definitionId=2430&_a=completed) - <span style="width: 1rem"> </span>[GIT](https://github.com/IgniteUI/igniteui-angular-examples/tree/vnext)<br/><span class="tLocal">JP</span> |
