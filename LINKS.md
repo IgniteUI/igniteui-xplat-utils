@@ -1,14 +1,5 @@
  <style> 
 
-/* table, th,  */
-
-
-/* td {
-    display: flex;
-    flex-direction: column;
-    background: orange;
-  } */
-
   tr {
     /* display: flex; */
     /* flex-direction: row; */
@@ -25,8 +16,6 @@ thead {
     /* display: table-header-group; */
     /* color: red; */
 }
-
-/* tr:nth-child(even) {background-color: #bdbdbd;} */
 
 .tLocal {
     display: inline-block;
