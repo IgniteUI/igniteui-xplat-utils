@@ -4,7 +4,8 @@
       "exclude": [
         "node_modules/**/*.ts",
         "**/odatajs-4.0.0.js",
-        "src/images/*.*"
+        "src/images/*.*",
+        "output/**/*.*"
       ]
     },
     "rules": {

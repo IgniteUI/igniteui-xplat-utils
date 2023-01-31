@@ -5,13 +5,18 @@ let fs = require('fs.extra');
 let path = require('path');
 let flatten = require('gulp-flatten');
 
-var xplatLinks = require('./src/xplatLinks.js')
+var xplatLinks = require('./tasks/xplatLinks.js')
 
 exports.generateLinks = generateLinks = gulp.series(
     xplatLinks.generate,
 );
 
-var xs = require('./src/xplatSamples.js')
+// var xplatDashboard = require('./tasks/xplatDashboard.js')
+// exports.fetchRepo = fetchRepo = gulp.series(
+//     xplatDashboard.fetchRepo,
+// );
+
+var xs = require('./tasks/xplatSamples.js')
 
 exports.generateDownloadFilesForAngular = xs.generateDownloadFilesForAngular
 exports.generateDownloadFilesForBlazor  = xs.generateDownloadFilesForBlazor

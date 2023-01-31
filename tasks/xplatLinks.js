@@ -79,7 +79,7 @@ function generate(cb) {
 
   // This table list links to XPLAT docs and samples for all platform, environments and locals.
 
-    var css = fs.readFileSync('./src/xplatLinks.css').toString();
+    // var css = fs.readFileSync('./tasks/xplatLinks.css').toString();
 
     var table = '';
     // table += ' <style> \n' + css + '\n </style> \n\n';

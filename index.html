@@ -2,6 +2,11 @@
   <head>
     <title>Ignite UI | infragistics</title>
     <meta charset="UTF-8" />
+    <!-- from SB -->
+    <!-- <meta http-equiv="x-ua-compatible" content="ie=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!-- <meta name="description" content="<%= htmlWebpackPlugin.options.title %>"> -->
+    <!-- <base href="/webcomponents-demos/"> -->
 
     <link rel="shortcut icon" href="https://static.infragistics.com/xplatform/images/browsers/wc.png" >
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -9,17 +14,42 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium Web" />
     <link rel="stylesheet" href="/src/index.css" type="text/css" />
 
+    <link rel="stylesheet" href="https://static.infragistics.com/xplatform/css/samples/shared.v8.css" type="text/css" />
+
+    <!-- <link href="<%= htmlWebpackPlugin.options.publicPath %>assets/css/index.css" rel="stylesheet" /> -->
+    <!-- <link href="<%= htmlWebpackPlugin.options.publicPath %>assets/css/browser.css" rel="stylesheet" /> -->
+
   </head>
 
   <body>
-    <div id="root">
-
-<div >
-
+    <!-- <div id="root"> -->
+<!-- <div >
     <div >run gulp scripts </div>
+</div> -->
+<!-- </div>  -->
 
+<div id="nav-bar" >
+  <div class="nav-content"  >
+
+      <!-- <div class="nav-logo">
+        <img src="/assets/icons/favicon.png" width="20px" height="20px">
+        <div >SAMPLES BROWSER</div>
+      </div> -->
+
+      <div class="nav-group">CHARTS</div>
+        <!-- <label id="nav-category-chart" class="nav-component">Category Chart</label>
+        <div id="nav-category-chart-list" class="nav-list" state="collapsed">
+            <a class="nav-link" href="#" data-nav="/samples/charts/category-chart-annotations">─<span>Annotations</span></a>
+        </div>
+        <label id="nav-data-chart" class="nav-component">Data Chart</label> -->
+      </div>
+
+  </div>
 </div>
-    </div>
+
+  <div id="router-target" class="with-nav-bar">
+  </div>
+
     <!-- This script is needed only for parcel and it will be excluded for webpack -->
     <% if (false) { %><script src="src/index.ts"></script><% } %>
   </body>
