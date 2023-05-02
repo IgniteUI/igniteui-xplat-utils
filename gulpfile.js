@@ -40,3 +40,17 @@ exports.cleanupSamples = gulp.series(
     xs.cleanupSamplesPackageModules,
     xs.cleanupSamplesOutput,
 );
+
+exports.verifyXplatJSON = xs.verifyXplatJSON;
+
+
+exports.test = function(cb) {
+
+    var str = `
+    C:\WORK\code-generation-library/WebGridChangeOnYearPercentTemplate/Angular.ts MISSING 'WebGridChangeOnYearPercentTemplate'
+`;
+
+    console.log(str);
+
+    cb();
+}

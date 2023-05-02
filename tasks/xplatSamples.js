@@ -206,3 +206,125 @@ function cleanupSamplesOutput(cb) {
     cb();
 
 } exports.cleanupSamplesOutput = cleanupSamplesOutput;
+
+
+function getRelative(filePath) {
+    var relative = filePath.split("igniteui-xplat-")[1];
+    relative = "../igniteui-xplat-" + relative;
+    relative = relative.split("\\").join("/");
+    return relative;
+}
+function verifyXplatJSON(cb) {
+
+    console.log("verifying ...");
+
+    var jsonFiles = [
+        '../igniteui-xplat-examples/**/*.json',
+        // '../igniteui-xplat-examples/**/data-chart/**/*.json',
+        // '../igniteui-xplat-examples/**/grid/**/*.json',
+        //  '../igniteui-xplat-examples/**/*.json',
+        '!../igniteui-xplat-examples/tests/**/*.json',
+        '!../**/sandbox.config.json',
+        '!../**/tsconfig.json',
+        '!../**/package*.json',
+    ];
+    var counter = 1;
+
+    var requirements = [
+        { target: '"type": "WebGrid"', modules: ["grids/WebGridModule"]},
+        { target: '"type": "PropertyEditorPanel"', modules: ["layouts/PropertyEditorPanelModule", "withDescriptions"]},
+        { target: '"type": "WebGridAvatarCellTemplate"', modules: ["webinputs/WebAvatarModule"]},
+        { target: '"type": "WebGridPinHeaderTemplate"', modules: ["webinputs/WebBadgeModule"]},
+        { target: '"type": "Legend"', modules: ["charts/LegendModule"]},
+        { target: '"type": "DataLegend"', modules: ["charts/DataLegendModule"]},
+        { target: '"type": "CategoryXAxis"', modules: ["charts/DataChartCategoryModule"]},
+        { target: '"type": "CategoryYAxis"', modules: ["charts/DataChartCategoryModule"]},
+
+        { target: '"type": "DataToolTipLayer"', modules: ["charts/DataChartInteractivityModule"]},
+       // NumericRadiusAxis"', modules: ["DataChartRadialCoreModule"]},
+        { target: '"type": "CategoryAngleAxis"', modules: ["charts/DataChartRadialModule", "charts/DataChartRadialCoreModule"]},
+
+      //  DataChart"', modules: ["charts/DataChartCoreModule"]},
+        { target: '"type": "BubbleSeries"', modules: ["charts/DataChartScatterModule", "charts/DataChartScatterCoreModule"]},
+        { target: '"type": "Scatter.*Series"', modules: ["charts/DataChartScatterModule", "charts/DataChartScatterCoreModule"]},
+
+        { target: '"type": "CategoryChart"', modules: ["charts/CategoryChartModule"]},
+
+    //    'abbreviateLargeNumbers": true' "charts/NumberAbbreviatorModule"
+    ];
+   // var requiredComponents = Object.keys(requiredModules);
+
+    gulp.src(jsonFiles, {base: './'}) //, {base: './'}
+    .pipe(es.map(function(file, fileCB) {
+        counter++;
+        var jsonPath = getRelative(file.dirname) + '\\' + file.basename;
+        //jsonPath = jsonPath.replace("", "");
+       // console.log(jsonPath);
+
+       let json = file.contents.toString();
+        if (jsonPath.includes("bubble")) {
+            //var regex = /"type":."Scatter.*Series"/gm
+            //var regex = '/"type":."Bubble.*Series"/gm';
+            var regex = new RegExp('"type":."Bubble.*Series"', "gm");
+            //var regex = /"type":."Bubble3.*Series"/gm
+       //     console.log(json.match(regex));
+        }
+
+        for (const req of requirements) {
+            //var type = '"type": ""' + component + '"';
+          //  var type = req.target; //'"' + component + '"';
+            var regex = new RegExp(req.target, "gm");
+            if (json.match(regex)) {
+                //var modules = requiredModules[component];
+              //  console.log(jsonPath + " " + req.modules.join(','));
+                for (const module of req.modules) {
+                    if (!json.includes(module)) {
+                        //console.log("Missing " + module + " in " + jsonPath);
+                        console.log(jsonPath + " - MISSING " + module);
+                    }
+                }
+            }
+
+        }
+
+        var jsonLines = json.split("\n");
+
+        var changeFile = false;
+        for (let i = 0; i < jsonLines.length; i++) {
+            let line = jsonLines[i];
+            let crrnLineEndWitComma = line.trim().endsWith(',');
+            let crrnLineHasTab = line.includes('\t');
+            if (crrnLineHasTab) {
+                line = line.split('\t').join('  ');
+                jsonLines[i] = line;
+                //fileChanged = true;
+                console.log(jsonPath + ":" + i + " << has a tab");
+                changeFile = true;
+            }
+            let next = i + 1 < jsonLines.length ? i + 1 : i;
+            let nextLine = jsonLines[next].trim();
+            let nextLineIsClosing = nextLine === '}' || nextLine === ']';
+            if (nextLineIsClosing && crrnLineEndWitComma) {
+                //jsonLines[i] = jsonLines[i].replace(',','');
+                //fileChanged = true;
+                console.log(jsonPath + ":" + next + " << has an extra comma");
+            }
+        }
+
+        if (changeFile) {
+            json = jsonLines.join("\n");
+            fs.writeFileSync(jsonPath, json);
+            // cb();
+        }
+
+        // "layouts/PropertyEditorPanelModule"
+        fileCB(null, file);
+    }))
+    // .pipe(flatten({ "includeParents": 1 }))
+    //.pipe(gulp.dest('./output/download-files/' + platform))
+    .on("end", function() {
+       // console.log('generated ' + counter + ' files');
+
+        cb();
+    });
+} exports.verifyXplatJSON = verifyXplatJSON;
