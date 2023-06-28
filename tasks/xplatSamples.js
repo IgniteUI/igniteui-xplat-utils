@@ -5,10 +5,12 @@ let fs = require('fs.extra');
 let path = require('path');
 let flatten = require('gulp-flatten');
 
+let releaseVolume = "v23-1"
 let configs = {
 
     angular: {
         repoName: "igniteui-angular-examples",
+        // zipFolder: "Infragistics_Angular_" + releaseVolume,
         downloadFiles: [
              '../igniteui-angular-examples/**/*.*',
         //   '../igniteui-angular-examples/**/*.json',
@@ -27,12 +29,16 @@ let configs = {
             '!../igniteui-angular-examples/**/dist/**/*.*',
             '!../igniteui-angular-examples/**/output/**/*.*',
             '!../igniteui-angular-examples/**/node_modules/**/*.*',
+            '!../igniteui-angular-examples/azure-pipelines/**/*.*',
         ],
     },
 
     react: {
         repoName: "igniteui-react-examples",
+        // zipFolder: "Infragistics_React_" + releaseVolume,
         downloadFiles: [
+             '../igniteui-react-examples/.env',
+             '../igniteui-react-examples/.eslintignore',
              '../igniteui-react-examples/**/*.*',
           // '../igniteui-react-examples/**/*.json',
           // '../igniteui-react-examples/browser/**/*.*',
@@ -48,11 +54,13 @@ let configs = {
             '!../igniteui-react-examples/**/dist/**/*.*',
             '!../igniteui-react-examples/**/output/**/*.*',
             '!../igniteui-react-examples/**/node_modules/**/*.*',
+            '!../igniteui-react-examples/azure-pipelines/**/*.*',
         ],
     },
 
     wc: {
         repoName: "igniteui-wc-examples",
+        // zipFolder: "Infragistics_WebComponents_" + releaseVolume,
         downloadFiles: [
              '../igniteui-wc-examples/**/*.*',
           // '../igniteui-wc-examples/**/*.json',
@@ -69,17 +77,20 @@ let configs = {
             '!../igniteui-wc-examples/**/dist/**/*.*',
             '!../igniteui-wc-examples/**/output/**/*.*',
             '!../igniteui-wc-examples/**/node_modules/**/*.*',
+            '!../igniteui-wc-examples/azure-pipelines/**/*.*',
         ],
     },
 
     blazor: {
         repoName: "igniteui-blazor-examples",
+        // zipFolder: "Infragistics_Blazor_" + releaseVolume,
         downloadFiles: [
             '../igniteui-blazor-examples/**/*.*',
         //  '../igniteui-blazor-examples/**/App.razor',
-        // '!../igniteui-blazor-examples/README.md',
+           '!../igniteui-blazor-examples/README.md',
+        // '!../igniteui-blazor-examples/browser/**/Pages/**/*.razor',
            '!../igniteui-blazor-examples/browser/IgBlazorSamples.Server/**/*.*',
-        //    '!../igniteui-blazor-examples/browser/IgBlazorSamples.Gulp/**/*.*',
+        // '!../igniteui-blazor-examples/browser/IgBlazorSamples.Gulp/**/*.*',
            '!../igniteui-blazor-examples/browser/**/code-viewer/**/*.*',  // skip auto-generated files by SB
         // '!../igniteui-blazor-examples/samples/**/*.*',   // excluding individual samples
            '!../igniteui-blazor-examples/research/**/*.*',
@@ -95,6 +106,7 @@ let configs = {
            '!../igniteui-blazor-examples/**/dist/**/*.*',
            '!../igniteui-blazor-examples/**/output/**/*.*',
            '!../igniteui-blazor-examples/**/node_modules/**/*.*',
+           '!../igniteui-blazor-examples/azure-pipelines/**/*.*',
         ],
     },
 };
@@ -118,6 +130,7 @@ function generateDownloadFilesFor(cb, platform) {
     }))
     // .pipe(flatten({ "includeParents": 1 }))
     .pipe(gulp.dest('./output/download-files/' + platform))
+    // .pipe(gulp.dest(outputPath))
     .on("end", function() {
         console.log('generated ' + counter + ' files in ' + outputPath);
 
